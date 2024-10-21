@@ -1,101 +1,100 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import Image from "next/image"
+import Link from "next/link"
+import { useState, useEffect } from "react"
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa"
+
+const texts = [
+  "Currently learning AI, Metaverse, and Web 3.0",
+  "Frontend Developer and UI/UX Designer",
+  "Specialized in Next.js, TailwindCSS, & TypeScript",
+  "Solopreneur (WMD) with Cutting-edge Skills",
+  "Building Modern User-centric Web Applications",
+]
+
+export default function HomePage() {
+  const [textIndex, setTextIndex] = useState(0)
+  const [showImage, setShowImage] = useState(false)
+
+  useEffect(() => {
+    const textInterval = setInterval(() => {
+      setTextIndex((prevIndex) => (prevIndex + 1) % texts.length)
+    }, 5000)
+
+    const imageTimeout = setTimeout(() => {
+      setShowImage(true)
+    }, 2000)
+
+    return () => {
+      clearInterval(textInterval)
+      clearTimeout(imageTimeout)
+    }
+  }, [])
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-8 lg:px-16 bg-gradient-to-r from-black via-purple-800 to-gray-900 pt-16 overflow-hidden">
+      <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between">
+        <div className="w-full lg:w-1/2 text-left animate-fade-in p-4 lg:pr-8">
+          <h1 className="text-white  text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-wide hover:scale-105 transition-transform duration-700 ease-in-out mb-4">
+            Hi, I'M Wahaj Ali
+          </h1>
+          <p
+            className="text-white text-base sm:text-lg lg:text-xl mt-4 transition-opacity duration-700 ease-in-out"
+            key={textIndex}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {texts[textIndex]}
+          </p>
+          <div className="mt-8">
+            <Link
+              href="/contact"
+              className="inline-block px-6 py-3 text-sm sm:text-base bg-purple-600 hover:bg-purple-700 rounded-lg shadow-md transition-transform hover:scale-110 duration-300 ease-in-out text-white font-semibold"
+            >
+              Contact Me
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        <div className={`w-full lg:w-1/2 mt-8 lg:mt-0 transition-opacity duration-1000 ${showImage ? "opacity-100" : "opacity-0"}`}>
+          <div className="relative w-64 h-64 mx-auto">
+            <Image
+              src="/download (1).jfif"
+              alt="Wahaj Ali Profile"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-full shadow-lg bg-purple-700 p-2 hover:scale-110 transition-transform duration-1000 ease-in-out"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-12 space-x-6 z-10">
+        <SocialLink href="https://www.linkedin.com/in/wahaj-ali-b3b7a72b5" icon={<FaLinkedin className="h-6 w-6" />} label="LinkedIn" />
+        <SocialLink href="https://github.com/wahaj67" icon={<FaGithub className="h-6 w-6" />} label="GitHub" />
+        <SocialLink href="https://" icon={<FaTwitter className="h-6 w-6" />} label="Twitter" />
+      </div>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in {
+          animation: fadeIn 1.5s ease-in-out;
+        }
+      `}</style>
+    </main>
+  )
+}
+
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="text-white hover:text-purple-300 hover:scale-110 transition-all duration-300"
+      aria-label={label}
+    >
+      {icon}
+    </Link>
+  )
 }
