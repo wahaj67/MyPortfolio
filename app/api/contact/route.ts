@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { name, email, message } = body;
 
-  // Create transporter object using nodemailer
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -14,7 +13,7 @@ export async function POST(req: Request) {
     },
   });
 
-  // Mail options configuration
+ 
   const mailOptions = {
     from: email,
     to: process.env.EMAIL_TO,
@@ -23,11 +22,11 @@ export async function POST(req: Request) {
   };
 
   try {
-    // Try sending the email
+   
     await transporter.sendMail(mailOptions);
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
-    // Log and return error response
+    
     console.error("Error sending email:", error);
     return NextResponse.json({ message: "Error sending email" }, { status: 500 });
   }
