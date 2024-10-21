@@ -37,7 +37,7 @@ export default function HomePage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between">
         <div className="w-full lg:w-1/2 text-left animate-fade-in p-4 lg:pr-8">
           <h1 className="text-white  text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-wide hover:scale-105 transition-transform duration-700 ease-in-out mb-4">
-            Hi, I'M Wahaj Ali
+            Hi IM Wahaj Ali
           </h1>
           <p
             className="text-white text-base sm:text-lg lg:text-xl mt-4 transition-opacity duration-700 ease-in-out"
