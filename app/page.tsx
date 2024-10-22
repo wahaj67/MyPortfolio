@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa"
+import { FaLinkedin, FaGithub,  } from "react-icons/fa"
 
 const texts = [
   "Currently learning AI, Metaverse, and Web 3.0",
@@ -57,13 +57,15 @@ export default function HomePage() {
 
         <div className={`w-full lg:w-1/2 mt-8 lg:mt-0 transition-opacity duration-1000 ${showImage ? "opacity-100" : "opacity-0"}`}>
           <div className="relative w-64 h-64 mx-auto">
-            <Image
-              src="/download (1).jfif"
-              alt="Wahaj Ali Profile"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full shadow-lg bg-purple-700 p-2 hover:scale-110 transition-transform duration-1000 ease-in-out"
-            />
+          <Image
+  src="/profile.jpg"
+  alt="Wahaj Ali Profile"
+  fill
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  style={{ objectFit: "cover" }}
+  className="rounded-full shadow-lg bg-purple-700 p-2 hover:scale-110 transition-transform duration-1000 ease-in-out"
+/>
+
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@ export default function HomePage() {
       <div className="flex justify-center mt-12 space-x-6 z-10">
         <SocialLink href="https://www.linkedin.com/in/wahaj-ali-b3b7a72b5" icon={<FaLinkedin className="h-6 w-6" />} label="LinkedIn" />
         <SocialLink href="https://github.com/wahaj67" icon={<FaGithub className="h-6 w-6" />} label="GitHub" />
-        <SocialLink href="https://" icon={<FaTwitter className="h-6 w-6" />} label="Twitter" />
+        
       </div>
 
       <style jsx global>{`
